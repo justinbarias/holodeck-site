@@ -1,0 +1,323 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="HoloDeck – Build, Test & Deploy AI Agents"
+  description="HoloDeck is an open-source experimentation platform for AI agents. Define agents in YAML, run tests and evaluations, and deploy production-ready APIs with a simple CLI."
+>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="nav-left">
+      <img src="/holodeck-site/holodeck.jpeg" alt="HoloDeck logo" class="logo-mark" />
+      <div class="logo-text">HoloDeck</div>
+    </div>
+    <nav class="nav-links">
+      <a href="#product">Product</a>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#use-cases">Use cases</a>
+      <a href="#community">Community</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-ghost" href="https://github.com/justinbarias/holodeck" target="_blank">GitHub</a>
+      <a class="btn btn-primary" href="https://justinbarias.github.io/holodeck-docs" target="_blank">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <div class="hero-tag">
+        <span>Open-Source Agent Platform</span>
+      </div>
+      <h1 class="hero-title">
+        Build, test & deploy <span>AI agents</span> — from YAML to production.
+      </h1>
+      <p class="hero-subtitle">
+        HoloDeck is an open-source experimentation platform for AI agents.
+        Define agents in YAML, run hypothesis-driven tests, and deploy
+        production-ready APIs with a simple CLI — no custom infra required.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://justinbarias.github.io/holodeck-docs" target="_blank">
+          Get started in 5 minutes
+        </a>
+        <a class="btn btn-ghost" href="https://github.com/justinbarias/holodeck" target="_blank">
+          View on GitHub
+        </a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">MIT Licensed</div>
+        <div class="hero-badge">Self-Hosted</div>
+        <div class="hero-badge">CLI-First</div>
+        <div class="hero-badge">Python 3.10+</div>
+      </div>
+    </div>
+    <div class="hero-code-card">
+      <div class="hero-code-header">
+        <div class="code-dots">
+          <div class="code-dot"></div>
+          <div class="code-dot"></div>
+          <div class="code-dot"></div>
+        </div>
+        <span>terminal • holodeck</span>
+      </div>
+      <div class="hero-code-block">
+pip install holodeck-ai
+
+holodeck init support --template customer-support
+holodeck test agent.yaml
+holodeck deploy agent.yaml --port 8000
+      </div>
+    </div>
+  </section>
+
+  <!-- What is HoloDeck -->
+  <section id="product">
+    <div class="section-label">Product</div>
+    <h2 class="section-title">What is HoloDeck?</h2>
+    <p class="section-lead">
+      HoloDeck is a no-code agent development platform for engineering teams.
+      Describe agents in YAML, run tests and evaluations from the CLI, and
+      ship them as FastAPI services — locally or in your own cloud.
+    </p>
+    <div class="two-col">
+      <div>
+        <ul style="padding-left: 18px; margin-top: 14px; font-size: 13px; color: var(--muted); line-height: 1.6;">
+          <li><strong>No-Code Agents</strong> — models, prompts, tools, memory, and vector stores defined in YAML.</li>
+          <li><strong>Hypothesis-Driven Testing</strong> — turn real user journeys into structured test cases.</li>
+          <li><strong>Integrated Evaluations</strong> — groundedness, relevance, F1, BLEU, ROUGE, and more.</li>
+          <li><strong>One-Command Deployment</strong> — <code>holodeck deploy</code> turns configs into APIs.</li>
+          <li><strong>Self-Hosted &amp; Open Source</strong> — no vendor lock-in, ship on your own infra.</li>
+        </ul>
+      </div>
+      <div class="code-card">
+name: "customer-support-agent"
+description: "Handles customer inquiries with empathy and accuracy"
+
+model:
+  provider: openai
+  name: gpt-4o-mini
+  temperature: 0.7
+
+instructions:
+  file: instructions/system-prompt.md
+
+tools:
+  - name: search_knowledge_base
+    type: vectorstore
+    source: data/faqs.md
+
+evaluations:
+  - metric: groundedness
+    threshold: 4.0
+  - metric: relevance
+    threshold: 4.0
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="section-label">Features</div>
+    <h2 class="section-title">Designed for how engineers build agents</h2>
+    <p class="section-lead">
+      HoloDeck covers the full lifecycle — definition, testing, orchestration,
+      deployment, and observability — with a CLI-first, YAML-native approach.
+    </p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-title">No-Code Agent Definition</div>
+        <div class="feature-body">
+          Describe models, prompts, tools, memory, and data sources in YAML.
+          Standardize how agents are built across your org.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Hypothesis-Driven Testing</div>
+        <div class="feature-body">
+          Define structured test cases with expected tools and ground truth
+          responses. Know when an agent is ready to ship.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Integrated Evaluations</div>
+        <div class="feature-body">
+          Run AI metrics like groundedness and relevance, plus NLP metrics
+          like F1, BLEU, ROUGE, and METEOR directly from the CLI.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Multi-Agent Orchestration</div>
+        <div class="feature-body">
+          Model complex systems using sequential, concurrent, handoff, and
+          group chat orchestration patterns.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Built for CI/CD</div>
+        <div class="feature-body">
+          <code>holodeck test</code>, <code>holodeck experiment</code>, and
+          <code>holodeck deploy</code> are CLI-native and CI-friendly.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-title">Production Deployment</div>
+        <div class="feature-body">
+          Deploy agents as FastAPI services locally or to AWS, Azure, or GCP,
+          with health checks and observability hooks.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works">
+    <div class="section-label">Flow</div>
+    <h2 class="section-title">From idea to production in three steps</h2>
+    <p class="section-lead">
+      Go from a hypothesis about an agent to a monitored, production-ready
+      API in minutes — not weeks.
+    </p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-title">Describe your agent</div>
+        <div class="step-body">
+          Use agent YAML to define the model, instructions, tools, context,
+          evaluations, and test cases side-by-side.
+        </div>
+        <div class="code-card">
+holodeck init customer-support --template conversational
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-title">Test &amp; evaluate</div>
+        <div class="step-body">
+          Run your agent against structured scenarios and capture evaluation
+          metrics before rolling out changes.
+        </div>
+        <div class="code-card">
+holodeck test agent.yaml
+holodeck chat agent.yaml
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-title">Deploy anywhere</div>
+        <div class="step-body">
+          Turn your agent into a FastAPI endpoint, then ship it to your
+          preferred cloud or run it on-prem.
+        </div>
+        <div class="code-card">
+holodeck deploy agent.yaml --cloud aws --region us-east-1
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orchestration -->
+  <section>
+    <div class="section-label">Orchestration</div>
+    <h2 class="section-title">Multi-agent systems without bespoke glue code</h2>
+    <p class="section-lead">
+      Real systems use more than one agent. HoloDeck gives you declarative
+      orchestration patterns so you can model routers, specialists, and
+      evaluators in YAML.
+    </p>
+    <div class="two-col">
+      <div>
+        <div class="pill-grid">
+          <div class="pill">Sequential workflows</div>
+          <div class="pill">Concurrent analysis</div>
+          <div class="pill">Handoff routing</div>
+          <div class="pill">Group chat collaboration</div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:14px;line-height:1.6;">
+          Use orchestration patterns inspired by the Microsoft Agent Framework
+          to chain agents for parsing, extraction, summarization, compliance
+          checks, and more — without inventing another internal framework.
+        </p>
+      </div>
+      <div class="code-card">
+name: "customer-service-system"
+orchestration:
+  pattern: handoff
+
+  router:
+    name: "service-router"
+    path: agents/router/agent.yaml
+
+  specialists:
+    - name: "billing"
+      path: agents/billing/agent.yaml
+    - name: "technical-support"
+      path: agents/technical-support/agent.yaml
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section id="use-cases">
+    <div class="section-label">Who it’s for</div>
+    <h2 class="section-title">Built for engineering teams — not click-through demos</h2>
+    <div class="cards-grid">
+      <div class="simple-card">
+        <h3>Platform &amp; ML Engineers</h3>
+        Standardize how agents are defined, tested, and deployed across teams.
+        Give developers a shared YAML contract instead of bespoke scripts.
+      </div>
+      <div class="simple-card">
+        <h3>Product &amp; Application Engineers</h3>
+        Ship AI features quickly without owning prompt infrastructure. Focus
+        on user experience, not wiring models and tools.
+      </div>
+      <div class="simple-card">
+        <h3>Data &amp; Research Teams</h3>
+        Run structured experiments, compare agent variants, and evaluate
+        responses using metrics tuned to your domain.
+      </div>
+      <div class="simple-card">
+        <h3>Modern AI Products</h3>
+        Customer support agents, research assistants, code assistants, sales
+        agents, and more — all defined in YAML and deployed with a CLI.
+      </div>
+    </div>
+  </section>
+
+  <!-- Observability & Community -->
+  <section id="community">
+    <div class="section-label">Observability &amp; Community</div>
+    <h2 class="section-title">Observe, measure, and improve — together</h2>
+    <div class="cards-grid">
+      <div class="simple-card">
+        <h3>OpenTelemetry &amp; cost tracking</h3>
+        HoloDeck emits traces, metrics, and logs following the semantic
+        conventions for generative AI. Track latency, token usage, and cost
+        per agent, per environment.
+      </div>
+      <div class="simple-card">
+        <h3>Open source &amp; MIT licensed</h3>
+        HoloDeck is built in the open. Join the community, open issues,
+        propose features, and help shape the agent platform you want to use.
+        <br /><br />
+        <a href="https://github.com/justinbarias/holodeck" target="_blank">View the repo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-row">
+      <div>© HoloDeck · MIT Licensed</div>
+      <div class="footer-links">
+        <a href="https://justinbarias.github.io/holodeck-docs" target="_blank">Docs</a>
+        <a href="https://github.com/justinbarias/holodeck" target="_blank">GitHub</a>
+        <a href="https://discord.gg/holodeck" target="_blank">Discord</a>
+        <a href="https://twitter.com/holodeckdev" target="_blank">Twitter</a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
